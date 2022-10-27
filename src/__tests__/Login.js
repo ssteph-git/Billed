@@ -170,12 +170,14 @@ describe("Given that I am a user on login page", () => {
 
       const inputEmailUser = screen.getByTestId("admin-email-input");
       fireEvent.change(inputEmailUser, { target: { value: inputData.email } });
+      // expect(inputEmailUser.value).toBe(inputData.email);
       expect(inputEmailUser.value).toBe(inputData.email);
 
       const inputPasswordUser = screen.getByTestId("admin-password-input");
       fireEvent.change(inputPasswordUser, {
         target: { value: inputData.password },
       });
+      // console.log('MonLOG: '+inputPasswordUser.value);
       expect(inputPasswordUser.value).toBe(inputData.password);
 
       const form = screen.getByTestId("form-admin");

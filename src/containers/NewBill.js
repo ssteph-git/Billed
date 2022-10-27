@@ -1,6 +1,21 @@
 import { ROUTES_PATH } from '../constants/routes.js'
 import Logout from "./Logout.js"
 
+var fileTypes = [
+  'image/jpg',
+  'image/jpeg',
+  'image/png'
+];
+
+function validFileType(file) {
+  for(var i = 0; i < fileTypes.length; i++) {
+    if(file.type === fileTypes[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export default class NewBill {
   constructor({ document, onNavigate, store, localStorage }) {
     this.document = document
@@ -17,7 +32,14 @@ export default class NewBill {
   }
   handleChangeFile = e => {
     e.preventDefault()
+    const fileDom = document.querySelector(`input[data-testid="file"]`);
     const file = this.document.querySelector(`input[data-testid="file"]`).files[0]
+    let verif = validFileType(file);
+    if(verif==false){
+      fileDom.value = '';
+      document.getElementById("valid-file").style.display = "block";
+    }else{
+    document.getElementById("valid-file").style.display = "none";
     const filePath = e.target.value.split(/\\/g)
     const fileName = filePath[filePath.length-1]
     const formData = new FormData()
@@ -39,6 +61,7 @@ export default class NewBill {
         this.fileUrl = fileUrl
         this.fileName = fileName
       }).catch(error => console.error(error))
+    }
   }
   handleSubmit = e => {
     e.preventDefault()

@@ -61,3 +61,13 @@ textarea:focus, input:focus, select:focus {
 *[placeholder] {
   color: #0E5AE5 !important;
 }
+
+#valid-file{
+  display: none;
+}
+
+#valid-file p{
+ color: red;
+ margin: 0px;
+ font-weight: bold;
+}

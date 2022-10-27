@@ -58,4 +58,11 @@ export const bills = [{
   "type": "Restaurants et bars",
   "fileUrl": "https://test.storage.tld/v0/b/billable-677b6.a…f-1.jpg?alt=media&token=4df6ed2c-12c8-42a2-b013-346c1346f732"
 }
-]
+].sort(function (a, b) {
+  if (a.date > b.date)
+   return -1;
+  if (a.date < b.date )
+    return 1;
+  return 0;
+});
+//ajout de la fonction "sort": pour trier le tableau d'objets: par dates
