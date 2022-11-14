@@ -1,3 +1,9 @@
+# Projet Billed
+Voici le code du projet 9 (Débuggez et testez un SaaS RH), du cursus "Développeur d'application - JavaScript React" chez Openclassrooms".
+
+Qui comprend :
+- le code complet du site web (backend et frontend).
+====================================================================
 
 ## L'architecture du projet :
 Ce projet, dit frontend, est connecté à un service API backend que vous devez aussi lancer en local.
