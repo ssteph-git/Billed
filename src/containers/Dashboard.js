@@ -48,7 +48,7 @@ export const card = (bill) => {
         <span> ${formatDate(bill.date)} </span>
         <span> ${bill.type} </span>
       </div>
-    </div>
+    // </div>
   `)
 }
 

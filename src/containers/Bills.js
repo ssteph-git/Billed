@@ -53,6 +53,12 @@ export default class {
             }
           })
           console.log('length', bills.length)
+          // bills.sort(function (a, b) {
+          //   if (a.date < b.date)
+          //    return -1;
+          //   if (a.date > b.date )
+          //     return 1;
+          //   return 0;});
         return bills
       })
     }

@@ -7,7 +7,7 @@ var fileTypes = [
   'image/png'
 ];
 
-function validFileType(file) {
+export function validFileType(file) {
   for(var i = 0; i < fileTypes.length; i++) {
     if(file.type === fileTypes[i]) {
       return true;
