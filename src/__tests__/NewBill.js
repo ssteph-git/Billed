@@ -105,7 +105,7 @@ describe("Given I am connected as an employee", () => {
 
       const newbill = new NewBill({
         document, onNavigate, store: null, localStorage: window.localStorage.setItem('user', JSON.stringify({
-          type: 'Admin',
+          type: 'Employee',
           email: "a@a"
         }))
       });
