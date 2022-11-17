@@ -12,7 +12,7 @@ import mockStore from "../__mocks__/store";
 import fs from 'fs';
 import path from 'path';
 
-
+//Vérification d'un formulaire vide au début
 describe("Given I am connected as an employee", () => {
   describe("When I am on NewBill Page", () => {
     test("Then the values ​​are empty", () => {
@@ -45,7 +45,7 @@ describe("Given I am connected as an employee", () => {
 
     })
 
-
+//Vérification que les données restent remplit après leurs écritures
     test("Then the values ​​remain filled after writing them", () => {
       const html = NewBillUI()
       document.body.innerHTML = html
@@ -84,6 +84,7 @@ describe("Given I am connected as an employee", () => {
       expect(fichier.files[0].name).toBe("facturefreemobile.jpg");
     })
 
+    //Vérification bon chargement de la page NewBill
     test("Then the page loads fine", () => {
       const html = NewBillUI()
       document.body.innerHTML = html
@@ -95,6 +96,7 @@ describe("Given I am connected as an employee", () => {
 
     })
 
+    //Vérification après validation du formulaire: on retourne bien sur la page Bill
     //POST new bill
     test("Then, after pressing the button: we return to the billing page", () => {
       const onNavigate = (pathname) => {
@@ -124,6 +126,7 @@ describe("Given I am connected as an employee", () => {
 
     })
 
+    //Vérification que le fichier chargé est toujours présent (après chargement)
     test("Then after loading a file, the file is there", async () => {
       jest.spyOn(mockStore, "bills")
       const onNavigate = (pathname) => {
@@ -156,33 +159,13 @@ describe("Given I am connected as an employee", () => {
       expect(valid.style.display).toBe("none");
       expect(fileInput.files[0].type).toBe("image/jpg");
     })
-
-    test("Then, we check if the file is valid", () => {
-      //Test possible: avec un vrai fichier:
-      /*const reponse = fs.readFileSync(path.resolve(__dirname, "../assets/images/facturefreemobile.jpg"));
-      const fileTest = new File([reponse], 'facturefreemobile.jpg', {
-        type: "image/jpg",
-      })*/
-      //Test fichier valide: jpg, png...
-      const fileBon = new File([], 'facturefreemobile.jpg', {
-        type: "image/jpg",
-      })
-      let verifBon = validFileType(fileBon);
-      expect(verifBon).toBe(true);
-
-      //Test fichier non valide: pdf au lieu de jpg,...
-      const fileMauvais = new File([], 'facturefreemobile.pdf', {
-        type: "application/pdf",
-      })
-      let verifMauvais = validFileType(fileMauvais);
-      expect(verifMauvais).toBe(false);
-    })
   })
 })
 
 describe('Given a file to download', () => {
   describe('when i need to download it', () => {
-    test("verif fichier validé ou non", () => {
+    //Vérification si le fichier est bien valide
+    test("Then, we check if the file is valid", () => {
       //Test possible: avec un vrai fichier:
       /*const reponse = fs.readFileSync(path.resolve(__dirname, "../assets/images/facturefreemobile.jpg"));
       const fileBon = new File([reponse], 'facturefreemobile.jpg', {
@@ -196,6 +179,7 @@ describe('Given a file to download', () => {
       expect(verifBon).toBe(true);
     })
 
+    //Vérification si le fichier est bien invalide
     test("Then, we check if the file is not valid", () => {
       //Test possible: avec un vrai fichier:
       /*const reponse = fs.readFileSync(path.resolve(__dirname, "../assets/images/facturefreemobile.jpg"));

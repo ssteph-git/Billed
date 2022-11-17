@@ -15,7 +15,7 @@
  jest.mock("../app/store", () => mockStore)
 
 
-
+//Expect oublié: on vérifie si l'icône est bien surlignée
 describe("Given I am connected as an employee", () => {
   describe("When I am on Bills Page", () => {
     test("Then bill icon in vertical layout should be highlighted", async () => {
@@ -45,6 +45,7 @@ describe("Given I am connected as an employee", () => {
       expect(dates).toEqual(datesSorted)
     })
 
+    //Chargement de la page justificatif, après appuis sur l'icône en forme d'oeil
     test("Then I click on the eye icon and the bill should appear", async () => {
 
       Object.defineProperty(window, 'localStorage', { value: localStorageMock })
@@ -69,6 +70,7 @@ describe("Given I am connected as an employee", () => {
       expect(handleClick).toHaveBeenCalled()
     })
 
+    //Vérification du bon chargement des bills
     //GET Bills
     test("Then the bills reports are loaded", async () => {
       Object.defineProperty(window, 'localStorage', { value: localStorageMock })
@@ -91,7 +93,7 @@ describe("Given I am connected as an employee", () => {
     })
   })
 
-
+//Affichage des erreurs si besoin
   describe("When an error occurs on API", () => {
     beforeEach(() => {
       jest.spyOn(mockStore, "bills")
